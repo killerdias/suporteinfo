@@ -1,0 +1,7 @@
+fastapi
+uvicorn
+jinja2
+argon2-cffi
+python-multipart
+passlib[bcrypt]
+python-jose[cryptography]
