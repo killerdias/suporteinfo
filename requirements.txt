@@ -1,5 +1,5 @@
 fastapi
-uuvicorn[standard]
+uvicorn[standard]
 jinja2
 argon2-cffi
 python-multipart
