@@ -72,9 +72,10 @@
                         </td>
                         <td>{{ c.observacoes or '' }}</td>
                         <td>
-                            <a href="rustdesk://connect?id={{ c.rustdesk_id }}&password={{ c.senha }}" class="btn btn-primary btn-sm" target="_blank">
-    <i class="bi bi-display"></i> Conectar
-</a>
+                            <a href="rustdesk://connect?id={{ c.rustdesk_id }}&password={{ c.senha or '' }}"
+                                class="btn btn-primary btn-sm" target="_blank">
+                                <i class="bi bi-display"></i> Conectar
+                            </a>
                             {% if c.status == 'conectado' %}
                             <a href="/finalizar/{{ c.id }}" class="btn btn-danger btn-sm ms-2">
                                 <i class="bi bi-stop-circle"></i> Finalizar
