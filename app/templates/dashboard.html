@@ -72,13 +72,14 @@
                         </td>
                         <td>{{ c.observacoes or '' }}</td>
                         <td>
-                            {% if request.headers.get('host')|default('') starts with 'localhost' or request.headers.get('host')|default('') starts with '127.0.0.1' %}
-                                <!-- Local: usa subprocess para abertura automática -->
+                            {% set host = request.headers.get('host')|default('') %}
+                            {% if 'localhost' in host or '127.0.0.1' in host %}
+                                <!-- Local: subprocess abre automático -->
                                 <a href="/conectar/{{ c.id }}" class="btn btn-primary btn-sm">
                                     <i class="bi bi-display"></i> Conectar
                                 </a>
                             {% else %}
-                                <!-- Online: abre RustDesk no PC do técnico via protocolo rustdesk:// -->
+                                <!-- Online: URL abre RustDesk no PC do técnico -->
                                 <a href="rustdesk://connect?id={{ c.rustdesk_id }}&password={{ c.senha | urlencode or '' }}"
                                    class="btn btn-primary btn-sm" target="_blank">
                                     <i class="bi bi-display"></i> Conectar
@@ -91,7 +92,6 @@
                             </a>
                             {% endif %}
 
-                            <!-- BOTÕES EDITAR E EXCLUIR -->
                             <a href="/editar/{{ c.id }}" class="btn btn-warning btn-sm ms-2" title="Editar">
                                 <i class="bi bi-pencil"></i>
                             </a>
